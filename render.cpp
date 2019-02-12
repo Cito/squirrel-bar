@@ -132,8 +132,8 @@ void Renderer::render_network(u64 frame) {
 	}
 	
 	char type[24], state[64], name[128];
-	bool success = false;
-	for (u32 i = 0;;) {
+	bool success = false, do_break = false;
+	for (u32 i = 0; !do_break;) {
 		i32 n1 = readnext(p, type, sizeof(type));
 		if (n1 == ':') {
 			i32 n2 = readnext(p, state, sizeof(state));
@@ -146,12 +146,14 @@ void Renderer::render_network(u64 frame) {
 				if (success = strcmp(state, "disconnected"))
 					break;
 			} else if (n2 == EOF) break;
-			else if (n2 == 'e') return;
+			else if (do_break = (n2 == 'e')) break;
 		} else if (n1 == EOF) break;
-		else if (n1 == 'e') return;
+		else if (do_break = (n1 == 'e')) return;
 	}
 
 	pclose(p);
+
+	if (do_break) return;
 
 	if (!success) {
 		render_text((char*)"no network", 264, 3, colors::bad);
