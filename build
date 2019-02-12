@@ -1,0 +1,21 @@
+#!/bin/bash
+
+compile_this () {
+
+	local MY_LIBS="-pthread -lOpenGL -lGLEW -lSDL2 -lSDL2_ttf -L/usr/X11/lib -lX11"
+	local MY_LANGLIB="-lstdc++"
+	local MY_SOURCE="*.cpp"
+	local MY_TARGET="sqbar"
+	local MY_LANG="c++17"
+
+	echo -e "\x1b[34;107mCompiling program\x1b[m"
+	if g++ -o $MY_TARGET $MY_SOURCE -L/usr/lib $MY_LIBS $MY_LANGLIB -std=$MY_LANG; then
+		echo -e "\x1b[32;107mProgram compiled, now ready:\x1b[m"
+		./$MY_TARGET
+	else
+		echo -e "\x1b[91;107mProgram didn't compile successfully\x1b[m"
+	fi
+	echo -e "\x1b[34;107mProgram stopped\x1b[m"
+}
+
+compile_this
