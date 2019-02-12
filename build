@@ -2,7 +2,7 @@
 
 compile_this () {
 
-	local MY_LIBS="-pthread -lOpenGL -lGLEW -lSDL2 -lSDL2_ttf -L/usr/X11/lib -lX11"
+	local MY_LIBS="-pthread -lSDL2 -lSDL2_ttf -L/usr/X11/lib -lX11"
 	local MY_LANGLIB="-lstdc++"
 	local MY_SOURCE="*.cpp"
 	local MY_TARGET="sqbar"
