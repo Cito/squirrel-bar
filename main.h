@@ -42,6 +42,5 @@ using cstr = char *; using ccstr = const char *;
 #include "font.h"
 #include "render.h"
 #include "window.h"
-#include "bar.h"
 
 #endif
