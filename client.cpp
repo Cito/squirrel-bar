@@ -12,6 +12,7 @@ void Client::init() {
 		return;
 	}
 	fgets(sockpath, sizeof(sockpath), p);
+	pclose(p);
 	u32 n = strlen(sockpath);
 	for (;is_whitespace(sockpath[n - 1]); n--) sockpath[n - 1] = 0;
 	
