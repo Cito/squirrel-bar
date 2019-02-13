@@ -40,5 +40,5 @@ bar {
 ...
 ```
 and save the file.
-### 2. Reload i3
+### 3. Reload i3
 reload i3 with `i3 reload`
